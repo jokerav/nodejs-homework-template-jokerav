@@ -25,6 +25,7 @@ const userSchema = Schema(
   },
   { versionKey: false, timestamps: true }
 );
+
 const registerSchema = Joi.object({
   email: Joi.string().pattern(emailRegexp).required(),
   password: Joi.string().min(6).required(),
