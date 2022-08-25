@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const { SECRET_KEY } = process.env;
 const { User } = require("../../models/user");
 const { createError } = require("../../helpers");
+
 const logout = async (req, res) => {
   const { authorization = "" } = req.headers;
   const [, token] = authorization.split(" ");
