@@ -1,16 +1,11 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { User, schemas } = require("../../models/user");
+const { User } = require("../../models/user");
 const { createError } = require("../../helpers");
 require("dotenv").config();
 const { SECRET_KEY } = process.env;
 
 const login = async (req, res) => {
-  const { error } = schemas.login.validate(req.body);
-  if (error) {
-    throw createError(400, error.message);
-  }
-
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   const comparePassword = await bcrypt.compare(password, user.password);

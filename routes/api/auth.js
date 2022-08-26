@@ -1,12 +1,16 @@
 const express = require("express");
 const ctrl = require("../../controllers/auth");
 const { ctrlWrapper } = require("../../helpers");
-const { auth } = require("../../middlewares");
+const {
+  auth,
+  loginValidation,
+  registerValidation,
+} = require("../../middlewares");
 const router = express.Router();
 
-router.post("/register", ctrlWrapper(ctrl.register));
+router.post("/register", registerValidation, ctrlWrapper(ctrl.register));
 
-router.post("/login", ctrlWrapper(ctrl.login));
+router.post("/login", loginValidation, ctrlWrapper(ctrl.login));
 
 router.get("/logout", auth, ctrlWrapper(ctrl.logout));
 
