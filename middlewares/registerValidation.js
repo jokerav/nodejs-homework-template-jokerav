@@ -1,5 +1,6 @@
-const { createError } = require("../helpers");
-const { schemas } = require("../models/user");
+const { basedir } = global;
+const { createError } = require(`${basedir}/helpers`);
+const { schemas } = require(`${basedir}/models/user`);
 
 const registerValidation = async (req, _, next) => {
   try {
