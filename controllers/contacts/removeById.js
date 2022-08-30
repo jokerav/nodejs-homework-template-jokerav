@@ -1,5 +1,7 @@
-const { Contact } = require("../models/contactsShema");
-const { createError } = require("../helpers");
+const { basedir } = global;
+const { Contact } = require(`${basedir}/models/contactsShema`);
+const { createError } = require(`${basedir}/helpers`);
+
 const removeById = async (req, res) => {
   const { id } = req.params;
   const result = await Contact.findByIdAndRemove(id);
