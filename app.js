@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const app = express();
+global.basedir = __dirname;
 const authRouter = require("./routes/api/auth");
 const contactsRouter = require("./routes/api/contactsRoute");
 

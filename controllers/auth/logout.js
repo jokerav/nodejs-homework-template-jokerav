@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 const { SECRET_KEY } = process.env;
-const { User } = require("../../models/user");
-const { createError } = require("../../helpers");
+const { basedir } = global;
+const { User } = require(`${basedir}/models/user`);
+const { createError } = require(`${basedir}/helpers`);
 
 const logout = async (req, res) => {
   const { authorization = "" } = req.headers;

@@ -1,7 +1,8 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { User } = require("../../models/user");
-const { createError } = require("../../helpers");
+const { basedir } = global;
+const { User } = require(`${basedir}/models/user`);
+const { createError } = require(`${basedir}/helpers`);
 require("dotenv").config();
 const { SECRET_KEY } = process.env;
 
