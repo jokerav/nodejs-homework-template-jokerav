@@ -8,7 +8,7 @@ global.basedir = __dirname;
 const authRouter = require("./routes/api/auth");
 const contactsRouter = require("./routes/api/contactsRoute");
 
-const STATIC_DIR = path.normalize(`./public/avatars`);
+const PUBLIC_DIR = path.normalize(`./public/avatars`);
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
@@ -20,7 +20,7 @@ app.use("/api/contacts", contactsRouter);
 
 // пробовал настроить раздачу статики из отдельного роута, не получилось.
 //  Напишите если это нужно перенести
-app.use("/avatars", express.static(STATIC_DIR));
+app.use("/avatars", express.static(PUBLIC_DIR));
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
