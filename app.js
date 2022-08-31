@@ -1,10 +1,14 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const path = require("path");
+
 const app = express();
 global.basedir = __dirname;
 const authRouter = require("./routes/api/auth");
 const contactsRouter = require("./routes/api/contactsRoute");
+
+const STATIC_DIR = path.normalize(`./public/avatars`);
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
@@ -13,6 +17,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/users", authRouter);
 app.use("/api/contacts", contactsRouter);
+
+// пробовал настроить раздачу статики из отдельного роута, не получилось.
+//  Напишите если это нужно перенести
+app.use("/avatars", express.static(STATIC_DIR));
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
