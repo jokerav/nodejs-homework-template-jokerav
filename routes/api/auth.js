@@ -6,6 +6,7 @@ const {
   auth,
   loginValidation,
   registerValidation,
+  upload,
 } = require(`${basedir}/middlewares`);
 const router = express.Router();
 
@@ -16,5 +17,12 @@ router.post("/login", loginValidation, ctrlWrapper(ctrl.login));
 router.get("/logout", auth, ctrlWrapper(ctrl.logout));
 
 router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
+
+router.patch(
+  "/avatars",
+  auth,
+  upload.single("avatar"),
+  ctrlWrapper(ctrl.updateAvatar)
+);
 
 module.exports = router;
