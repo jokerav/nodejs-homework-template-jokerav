@@ -17,9 +17,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/users", authRouter);
 app.use("/api/contacts", contactsRouter);
-
-// пробовал настроить раздачу статики из отдельного роута, не получилось.
-//  Напишите если это нужно перенести
 app.use("/avatars", express.static(PUBLIC_DIR));
 
 app.use((req, res) => {
