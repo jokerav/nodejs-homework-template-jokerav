@@ -1,4 +1,5 @@
 const sgMail = require("@sendgrid/mail");
+const { createError } = require("./createError");
 require("dotenv").config();
 
 const { MAIL_API_KEY } = process.env;
@@ -11,7 +12,7 @@ const sendMail = async (data) => {
     await sgMail.send(mail);
     return true;
   } catch (error) {
-    throw error;
+    throw createError(404);
   }
 };
 

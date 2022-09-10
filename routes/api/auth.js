@@ -22,7 +22,6 @@ router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
 router.get("/verify/:verificationToken", ctrlWrapper(ctrl.validateEmail));
 
 router.post("/verify", ctrlWrapper(ctrl.repeatValidateEmail));
-// router.post("/verify", ctrlWrapper(console.log("Error")));
 
 router.patch(
   "/avatars",

@@ -3,7 +3,6 @@ const { User, schemas } = require(`${basedir}/models/user`);
 const { createError, sendMail } = require(`${basedir}/helpers`);
 
 const repeatValidateEmail = async (req, res, next) => {
-  console.log("repeatValidateEmail");
   try {
     const { error } = schemas.email.validate(req.body);
     if (error) {
