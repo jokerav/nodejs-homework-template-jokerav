@@ -16,7 +16,7 @@ const repeatValidateEmail = async (req, res, next) => {
     const mail = {
       to: email,
       subject: "Подтвеждение email",
-      html: `<a target="_blank" href='http://localhost:3000/users/${user.verificationToken}'>Нажмите чтобы подтвердить свой email</a>`,
+      html: `<a target="_blank" href='http://localhost:3000/users/verify/${user.verificationToken}'>Нажмите чтобы подтвердить свой email</a>`,
     };
     sendMail(mail);
     res.json({
